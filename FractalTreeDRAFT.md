@@ -1,10 +1,4 @@
-# The goal of this project is to create a fractal tree which changes the angle at which the fractal gets drawn based on the position of the mouse.
-# We are using turtle which is a library that lets us draw the fractal on a virtual canvas. For now I do not have the code update based on the position of the mouse but I it can draw a fractal tree based on an initial angle provided.
-
-
 import turtle
-
-n = int(input("What angle: "))
 
 # Define the recursive function to draw the tree
 def draw_tree(length, angle, level):
@@ -19,18 +13,27 @@ def draw_tree(length, angle, level):
     t.left(angle)
     t.backward(length)
 
+# Set up the turtle window and turtle
 window = turtle.Screen()
 window.setup(width=800, height=800)
 window.title("Fractal Tree")
-
 t = turtle.Turtle()
 t.left(90)
 t._tracer(0)
 t.speed(0)
 t.color('black')
 
-draw_tree(100, n, 10)
+# Ask the user for the angle to use
+angle_str = turtle.textinput("Fractal Tree", "Enter the angle:")
+angle = int(angle_str) if angle_str is not None else 45
+
+# Ask the user for the depth to use
+depth_str = turtle.textinput("Fractal Tree", "Enter the depth:")
+depth = int(depth_str) if depth_str is not None else 10
+
+# Draw the fractal tree with the specified angle and depth
+draw_tree(100, angle, depth)
 t.penup()
+
 # Keep the turtle window open
 turtle.mainloop()
-
